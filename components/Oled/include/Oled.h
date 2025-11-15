@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include "esp32_i2c_rw.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 // ========================= 常量定义 =========================
 
@@ -126,6 +128,6 @@ void oled_ascii8(uint8_t x, uint8_t y, char *str);
  * 
  * @param ctx 全局上下文指针，包含电机控制和传感器数据
  */
-void oled_disp();
+void oled_disp_task();
 
 #endif

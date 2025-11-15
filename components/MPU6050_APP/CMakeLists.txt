@@ -1,3 +1,3 @@
 idf_component_register(SRCS "MPU6050_APP.c"
                     INCLUDE_DIRS "include"
-                    REQUIRES driver mpu6050)
+                    REQUIRES driver mpu6050 Wreless_connect log)

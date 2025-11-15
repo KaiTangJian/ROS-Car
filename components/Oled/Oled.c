@@ -355,8 +355,12 @@ bool oled_init() {
  */
   void oled_disp(void* const pvParameters)
  {
-      oled_ascii8(0, 0, "   ESP32-S3 OLED   ");
-      oled_ascii8(0, 1, "     Test Demo     ");
+    while(1)
+    {  
+    oled_ascii8(0, 0, "   ESP32-S3 OLED   ");
+    oled_ascii8(0, 1, "     Test Demo     ");
+    vTaskDelay(100);
+    }
   //   context_pack_t *ctx = (context_pack_t*)pvPara;
 //   char buf[25];  // 显示缓冲区
 
@@ -412,4 +416,24 @@ bool oled_init() {
 //   }
  }
 
+ /**
+ * @brief 创建OLED显示任务
+ * 
+ * 启动独立的FreeRTOS任务用于周期性更新OLED显示：
+ * - 任务名称："oled_show"
+ * - 栈大小：8KB（8192字节）
+ * - 优先级：10（高优先级，确保显示及时更新）
+ * - CPU核心：0（与其他UI相关任务运行在同一核心）
+ * 
+ * 任务特点：
+ * - 独立运行，不阻塞主程序
+ * - 高优先级确保显示实时性
+ * - 适中的栈空间满足字符串处理需求
+ * 
+ * @param ctx 全局上下文指针，传递给显示任务
+ */
+void oled_disp_task()
+{
+    xTaskCreatePinnedToCore(oled_disp, "oled_disp", 8 * 1024, NULL, 10, NULL, 0);
+}
 
