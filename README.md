@@ -567,7 +567,6 @@ static void oled_display_task(void* params) {
 - **chore**: 构建或辅助工具
 
 ## 📄 许可证
-
 本项目采用MIT许可证。详见 [LICENSE](LICENSE) 文件。
 
 ## 🙏 致谢
@@ -583,7 +582,3 @@ static void oled_display_task(void* params) {
 - **技术讨论**: [GitHub Discussions]
 
 ---
-
-**⭐ 如果这个项目对您有帮助，请给我们一个星标！**
-
-© 2024 米醋电子工作室 | ESP32-S3 IMU & OLED Template Project
